@@ -121,10 +121,20 @@
 
             </div>
 
-            <form action="{{url('/employee/update-employee')}}" method="post">
+            <form action="{{url('/employee/store-employee')}}" method="post">
                 @csrf
                 <div class="modal-body">
                     @csrf
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input name="name" type="nama" class="form-control" id="nama" autocomplete="no">

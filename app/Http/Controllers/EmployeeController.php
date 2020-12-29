@@ -37,7 +37,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'gender' => 'required'
+        ]);
         Employee::create($request->all());
         return redirect('/employee');
     }
@@ -73,6 +78,12 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'gender' => 'required'
+        ]);
         $employee->update($request->all());
         return redirect('/');
     }
